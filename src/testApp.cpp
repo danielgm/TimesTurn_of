@@ -14,7 +14,7 @@ void testApp::update(){
 	
 	for (int w = 0; w < frameWidth; w++) {
 		for (int h = 0; h < frameHeight; h++) {
-			int frameIndex = ofClamp(ofMap(ofMap(w, 0, frameWidth, leftValue, rightValue), 0, 1, 0, 255), 0, 255);
+			int frameIndex = ofClamp(ofMap(ofMap(w, 0, frameWidth, leftValue, rightValue), 0, 1, 0, frameCount), 0, frameCount);
 			for (int c = 0; c < 4; c++) {
 				drawPixels[frameWidth * h * 4 + w * 4 + c] = inputPixels[												   frameIndex * frameWidth * frameHeight * 4 + frameWidth * h * 4 + w * 4 + c];
 			}
