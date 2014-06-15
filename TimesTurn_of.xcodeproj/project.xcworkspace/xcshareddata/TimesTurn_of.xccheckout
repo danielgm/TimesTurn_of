@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3B5157CA-AACE-4D34-8D13-4D713023699B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TimesTurn_of</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C38ACFC3-DE30-4935-B2C2-3087935D5172</key>
+		<string>https://github.com/kylemcdonald/ofxCv.git</string>
+		<key>D62A4CA0-06E8-45EE-9661-CE6CF1E47810</key>
+		<string>https://github.com/danielgm/TimesTurn_of.git</string>
+		<key>EEACB52B-3236-4551-A4FE-8BB889FF6E54</key>
+		<string>https://github.com/paulobarcelos/ofxMacamPs3Eye.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TimesTurn_of.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C38ACFC3-DE30-4935-B2C2-3087935D5172</key>
+		<string>../../../../../addons/ofxCv</string>
+		<key>D62A4CA0-06E8-45EE-9661-CE6CF1E47810</key>
+		<string>../..</string>
+		<key>EEACB52B-3236-4551-A4FE-8BB889FF6E54</key>
+		<string>../../../../../addons/ofxMacamPs3Eye</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/danielgm/TimesTurn_of.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D62A4CA0-06E8-45EE-9661-CE6CF1E47810</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C38ACFC3-DE30-4935-B2C2-3087935D5172</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxCv</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EEACB52B-3236-4551-A4FE-8BB889FF6E54</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxMacamPs3Eye</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D62A4CA0-06E8-45EE-9661-CE6CF1E47810</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TimesTurn_of</string>
+		</dict>
+	</array>
+</dict>
+</plist>
