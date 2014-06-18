@@ -1,14 +1,21 @@
 #include "TickReader.h"
 
-void TickReader::setup() {
-  // TODO: Remove hard-coded values.
-  numInputs = 2;
+void TickReader::setup(ofSerial &s, int nInputs) {
+  serial = &s;
+
+  numInputs = nInputs;
   numTicks = new int[numInputs];
 }
 
 void TickReader::update() {
   for (int i = 0; i < numInputs; i++) {
-    numTicks[i] = ofRandom(0, 8);
+    numTicks[i] = 0;
+  }
+
+  char c;
+  while (serial->available()) {
+    c = serial->readByte();
+    numTicks[ofToInt(ofToString(c))]++;
   }
 }
 

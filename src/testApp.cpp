@@ -6,10 +6,10 @@ void testApp::setup(){
 
   drawPixels = new unsigned char[frameWidth * frameHeight * 4];
 
-  tickReader.setup();
-
   serial.listDevices();
   serial.setup(0, 9600);
+
+  tickReader.setup(serial, 2);
 }
 
 //--------------------------------------------------------------
@@ -21,15 +21,9 @@ void testApp::update(){
     for (int h = 0; h < frameHeight; h++) {
       int frameIndex = ofClamp(ofMap(ofMap(w, 0, frameWidth, leftValue, rightValue), 0, 1, 0, frameCount), 0, frameCount - 1);
       for (int c = 0; c < 4; c++) {
-        drawPixels[frameWidth * h * 4 + w * 4 + c] = inputPixels[                           frameIndex * frameWidth * frameHeight * 4 + frameWidth * h * 4 + w * 4 + c];
+        drawPixels[frameWidth * h * 4 + w * 4 + c] = inputPixels[frameIndex * frameWidth * frameHeight * 4 + frameWidth * h * 4 + w * 4 + c];
       }
     }
-  }
-
-  char c;
-  while (serial.available()) {
-    c = serial.readByte();
-    cout << c;
   }
 
   tickReader.update();
@@ -117,6 +111,9 @@ void testApp::loadFrames(string folder) {
   frameHeight = image.height;
 
   if (frameWidth <= 0 || frameHeight <= 0) return;
+
+  /// DEBUG:
+  frameCount = 1;
 
   cout << "Loading " << frameCount << " frames at " << frameWidth << "x" << frameHeight << "... ";
 
