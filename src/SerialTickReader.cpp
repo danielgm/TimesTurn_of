@@ -1,13 +1,13 @@
-#include "TickReader.h"
+#include "SerialTickReader.h"
 
-void TickReader::setup(ofSerial &s, int nInputs) {
+void SerialTickReader::setup(ofSerial &s, int nInputs) {
   serial = &s;
 
   numInputs = nInputs;
   numTicks = new int[numInputs];
 }
 
-void TickReader::update() {
+void SerialTickReader::update() {
   for (int i = 0; i < numInputs; i++) {
     numTicks[i] = 0;
   }
@@ -19,11 +19,11 @@ void TickReader::update() {
   }
 }
 
-int TickReader::getNumInputs() {
+int SerialTickReader::getNumInputs() {
   return numInputs;
 }
 
-int TickReader::getNumTicks(int input) {
+int SerialTickReader::getNumTicks(int input) {
   return numTicks[input];
 }
 

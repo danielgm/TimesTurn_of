@@ -1,8 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ITickReader.h"
 
-class TickReader {
+class SerialTickReader
+: public ITickReader {
 
   public:
     void setup(ofSerial &serial, int nInputs);

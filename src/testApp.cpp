@@ -9,7 +9,9 @@ void testApp::setup(){
   serial.listDevices();
   serial.setup(0, 9600);
 
-  tickReader.setup(serial, 2);
+  SerialTickReader* serialTickReader = new SerialTickReader();
+  serialTickReader->setup(serial, 2);
+  tickReader = serialTickReader;
 }
 
 //--------------------------------------------------------------
@@ -26,10 +28,10 @@ void testApp::update(){
     }
   }
 
-  tickReader.update();
+  tickReader->update();
   cout << "Ticks: ";
-  for (int i = 0; i < tickReader.getNumInputs(); i++) {
-    cout << tickReader.getNumTicks(i) << "\t";
+  for (int i = 0; i < tickReader->getNumInputs(); i++) {
+    cout << tickReader->getNumTicks(i) << "\t";
   }
   cout << endl;
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "TickReader.h"
+#include "SerialTickReader.h"
 
 class testApp : public ofBaseApp{
 
@@ -30,6 +30,6 @@ class testApp : public ofBaseApp{
   unsigned char* drawPixels;
   ofImage drawImage;
 
-  TickReader tickReader;
+  ITickReader* tickReader;
   ofSerial serial;
 };

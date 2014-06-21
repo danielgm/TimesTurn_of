@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		031A6112194E68B900376B85 /* TickReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031A6110194E68B900376B85 /* TickReader.cpp */; };
+		031A611B1955E0E800376B85 /* ITickReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031A61171955E0E800376B85 /* ITickReader.cpp */; };
+		031A611C1955E0E800376B85 /* SerialTickReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031A61191955E0E800376B85 /* SerialTickReader.cpp */; };
 		10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A810DF70319A10353588F5DB /* Tracker.cpp */; };
 		169D3C72FDE6C5590A1616F5 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7B6A03390302D5A2C9F0E4AB /* ofxCvFloatImage.cpp */; };
 		1D5F3298C2FA073628012944 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */; };
@@ -105,8 +106,10 @@
 		0173A3F435DECD5A4DDE0B8E /* logger.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = logger.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/logger.h; sourceTree = SOURCE_ROOT; };
 		01DAE5C2E3E0A74207B2BE49 /* saving.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = saving.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/saving.h; sourceTree = SOURCE_ROOT; };
 		01DCC0911400F9ACF5B65578 /* ofxXmlSettings.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxXmlSettings.h; path = ../../../addons/ofxXmlSettings/src/ofxXmlSettings.h; sourceTree = SOURCE_ROOT; };
-		031A6110194E68B900376B85 /* TickReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TickReader.cpp; sourceTree = "<group>"; };
-		031A6111194E68B900376B85 /* TickReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickReader.h; sourceTree = "<group>"; };
+		031A61171955E0E800376B85 /* ITickReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ITickReader.cpp; sourceTree = "<group>"; };
+		031A61181955E0E800376B85 /* ITickReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITickReader.h; sourceTree = "<group>"; };
+		031A61191955E0E800376B85 /* SerialTickReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SerialTickReader.cpp; sourceTree = "<group>"; };
+		031A611A1955E0E800376B85 /* SerialTickReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialTickReader.h; sourceTree = "<group>"; };
 		03A75A648BC4CF1D9DEDD0CE /* Flow.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Flow.cpp; path = ../../../addons/ofxCv/libs/ofxCv/src/Flow.cpp; sourceTree = SOURCE_ROOT; };
 		057122A817D12571F8C0C7A4 /* ofxCvGrayscaleImage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxCvGrayscaleImage.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvGrayscaleImage.cpp; sourceTree = SOURCE_ROOT; };
 		087522EA37A32B8D902CAB64 /* core_c.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = core_c.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core/core_c.h; sourceTree = SOURCE_ROOT; };
@@ -812,11 +815,13 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				031A61171955E0E800376B85 /* ITickReader.cpp */,
+				031A61181955E0E800376B85 /* ITickReader.h */,
+				031A61191955E0E800376B85 /* SerialTickReader.cpp */,
+				031A611A1955E0E800376B85 /* SerialTickReader.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
-				031A6110194E68B900376B85 /* TickReader.cpp */,
-				031A6111194E68B900376B85 /* TickReader.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -972,7 +977,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				031A6112194E68B900376B85 /* TickReader.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
 				250A95BA26587BE85DB0A353 /* ofxCvColorImage.cpp in Sources */,
@@ -994,6 +998,7 @@
 				5CC34D433F5806179935B89D /* Flow.cpp in Sources */,
 				2023EF517ED2D8B397511D4B /* Helpers.cpp in Sources */,
 				C602002DE761F9B52DB4400A /* ObjectFinder.cpp in Sources */,
+				031A611B1955E0E800376B85 /* ITickReader.cpp in Sources */,
 				7CDAD32BE4FA46701E3552C7 /* RunningBackground.cpp in Sources */,
 				10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */,
 				A6668C5B1272D7FCD5B5A16F /* Utilities.cpp in Sources */,
@@ -1011,6 +1016,7 @@
 				859C20916AF9A4F8D4A929F6 /* MyCameraDriver.m in Sources */,
 				A6E663C9C7F2B67585FCA31A /* MyCameraInfo.m in Sources */,
 				4C223A5AC3B77923C42438F7 /* OV534Driver.m in Sources */,
+				031A611C1955E0E800376B85 /* SerialTickReader.cpp in Sources */,
 				56C1461D4D6DF6D99FCB8A9A /* Resolvers.cpp in Sources */,
 				90965E88EDD92E0D10B07FE2 /* Sensor.m in Sources */,
 				D181BFBB3780AD7FDFC2BF76 /* ofxMacamPs3Eye.mm in Sources */,
