@@ -9,9 +9,9 @@ void testApp::setup(){
   serial.listDevices();
   serial.setup(0, 9600);
 
-  SerialTickReader* serialTickReader = new SerialTickReader();
-  serialTickReader->setup(serial, 2);
-  tickReader = serialTickReader;
+  RecordedTickReader* recordedTickReader = new RecordedTickReader();
+  recordedTickReader->setup("longsteady.csv", 2);
+  tickReader = recordedTickReader;
 }
 
 //--------------------------------------------------------------

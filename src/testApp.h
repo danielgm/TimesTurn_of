@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "RecordedTickReader.h"
 #include "SerialTickReader.h"
 
 class testApp : public ofBaseApp{
