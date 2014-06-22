@@ -7,14 +7,14 @@ class SerialTickReader
 : public ITickReader {
 
   public:
-    void setup(ofSerial &serial, int nInputs);
+    void setup(ofSerial &serial, int nChannels);
     void update();
 
-    int getNumInputs();
-    int getNumTicks(int input);
+    int getNumChannels();
+    int getNumTicks(int channel);
 
   private:
     ofSerial* serial;
-    int numInputs;
+    int numChannels;
     int* numTicks;
 };

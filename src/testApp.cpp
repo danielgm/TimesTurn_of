@@ -30,7 +30,7 @@ void testApp::update(){
 
   tickReader->update();
   cout << "Ticks: ";
-  for (int i = 0; i < tickReader->getNumInputs(); i++) {
+  for (int i = 0; i < tickReader->getNumChannels(); i++) {
     cout << tickReader->getNumTicks(i) << "\t";
   }
   cout << endl;

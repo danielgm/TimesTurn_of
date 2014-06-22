@@ -1,14 +1,14 @@
 #include "SerialTickReader.h"
 
-void SerialTickReader::setup(ofSerial &s, int nInputs) {
+void SerialTickReader::setup(ofSerial &s, int nChannels) {
   serial = &s;
 
-  numInputs = nInputs;
-  numTicks = new int[numInputs];
+  numChannels = nChannels;
+  numTicks = new int[numChannels];
 }
 
 void SerialTickReader::update() {
-  for (int i = 0; i < numInputs; i++) {
+  for (int i = 0; i < numChannels; i++) {
     numTicks[i] = 0;
   }
 
@@ -19,11 +19,11 @@ void SerialTickReader::update() {
   }
 }
 
-int SerialTickReader::getNumInputs() {
-  return numInputs;
+int SerialTickReader::getNumChannels() {
+  return numChannels;
 }
 
-int SerialTickReader::getNumTicks(int input) {
-  return numTicks[input];
+int SerialTickReader::getNumTicks(int channel) {
+  return numTicks[channel];
 }
 

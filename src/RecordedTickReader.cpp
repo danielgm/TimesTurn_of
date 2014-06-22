@@ -1,19 +1,19 @@
 #include "RecordedTickReader.h"
 
-void RecordedTickReader::setup(string filepath, int nInputs) {
+void RecordedTickReader::setup(string filepath, int nChannels) {
   ofFile file;
   file.open(filepath);
   fileBuffer = file.readToBuffer();
   savedLine = "";
 
-  numInputs = nInputs;
-  numTicks = new int[numInputs];
+  numChannels = nChannels;
+  numTicks = new int[numChannels];
 
   startTime = ofGetSystemTime();
 }
 
 void RecordedTickReader::update() {
-  for (int i = 0; i < numInputs; i++) {
+  for (int i = 0; i < numChannels; i++) {
     numTicks[i] = 0;
   }
 
@@ -34,12 +34,12 @@ void RecordedTickReader::update() {
   }
 }
 
-int RecordedTickReader::getNumInputs() {
-  return numInputs;
+int RecordedTickReader::getNumChannels() {
+  return numChannels;
 }
 
-int RecordedTickReader::getNumTicks(int input) {
-  return numTicks[input];
+int RecordedTickReader::getNumTicks(int channel) {
+  return numTicks[channel];
 }
 
 bool RecordedTickReader::processLine(string line) {
@@ -49,8 +49,8 @@ bool RecordedTickReader::processLine(string line) {
 
   long time = ofToInt(tokens[1]);
   if (time < now) {
-    int input = ofToInt(tokens[0]);
-    numTicks[input]++;
+    int channel = ofToInt(tokens[0]);
+    numTicks[channel]++;
     return true;
   }
   else {

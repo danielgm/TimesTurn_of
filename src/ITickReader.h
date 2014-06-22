@@ -7,6 +7,6 @@ class ITickReader {
   public:
     virtual void update() = 0;
 
-    virtual int getNumInputs() = 0;
-    virtual int getNumTicks(int input) = 0;
+    virtual int getNumChannels() = 0;
+    virtual int getNumTicks(int channel) = 0;
 };
