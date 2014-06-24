@@ -10,15 +10,14 @@ class RecordedTickReader
     void setup(string filepath, int nChannels);
     void update();
 
-    int getNumChannels();
-    int getNumTicks(int channel);
+    bool hasNext();
+    Tick next();
 
   private:
-    bool processLine(string line);
+    Tick processLine(string line);
 
     long startTime;
     ofBuffer fileBuffer;
-    string savedLine;
+    Tick nextTick;
     int numChannels;
-    int* numTicks;
 };

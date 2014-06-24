@@ -29,11 +29,10 @@ void testApp::update(){
   }
 
   tickReader->update();
-  cout << "Ticks: ";
-  for (int i = 0; i < tickReader->getNumChannels(); i++) {
-    cout << tickReader->getNumTicks(i) << "\t";
+  while (tickReader->hasNext()) {
+    Tick tick = tickReader->next();
+    cout << tick.channel << "\t" << tick.time << endl;
   }
-  cout << endl;
 }
 
 //--------------------------------------------------------------
