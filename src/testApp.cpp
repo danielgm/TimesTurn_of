@@ -6,12 +6,14 @@ void testApp::setup(){
 
   drawPixels = new unsigned char[frameWidth * frameHeight * 4];
 
-  serial.listDevices();
-  serial.setup(0, 9600);
+  //serial.listDevices();
+  //serial.setup(0, 9600);
 
   RecordedTickReader* recordedTickReader = new RecordedTickReader();
   recordedTickReader->setup("longsteady.csv", 2);
   tickReader = recordedTickReader;
+
+  tickInterpreter.setup(tickReader, 2);
 }
 
 //--------------------------------------------------------------
@@ -28,11 +30,8 @@ void testApp::update(){
     }
   }
 
-  tickReader->update();
-  while (tickReader->hasNext()) {
-    Tick tick = tickReader->next();
-    cout << tick.channel << "\t" << tick.time << endl;
-  }
+  tickInterpreter.update();
+  cout << tickInterpreter.getAverage(0) << "\t" << tickInterpreter.getAverage(1) << endl;
 }
 
 //--------------------------------------------------------------
@@ -116,7 +115,7 @@ void testApp::loadFrames(string folder) {
   /// DEBUG:
   frameCount = 1;
 
-  cout << "Loading " << frameCount << " frames at " << frameWidth << "x" << frameHeight << "... ";
+  //cout << "Loading " << frameCount << " frames at " << frameWidth << "x" << frameHeight << "... ";
 
   if (inputPixels) delete[] inputPixels;
   inputPixels = new unsigned char[frameCount * frameWidth * frameHeight * 4];
@@ -135,5 +134,5 @@ void testApp::loadFrames(string folder) {
     }
   }
 
-  cout << "done." << endl;
+  //cout << "done." << endl;
 }

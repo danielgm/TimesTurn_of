@@ -1,8 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
+
 #include "RecordedTickReader.h"
 #include "SerialTickReader.h"
+#include "TickInterpreter.h"
 
 class testApp : public ofBaseApp{
 
@@ -31,6 +33,7 @@ class testApp : public ofBaseApp{
   unsigned char* drawPixels;
   ofImage drawImage;
 
-  ITickReader* tickReader;
   ofSerial serial;
+  ITickReader* tickReader;
+  TickInterpreter tickInterpreter;
 };
