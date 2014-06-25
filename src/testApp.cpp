@@ -14,6 +14,33 @@ void testApp::setup(){
   tickReader = recordedTickReader;
 
   tickInterpreter.setup(tickReader, 2);
+
+  ofxSparkline::Settings settings;
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Average 0.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = 0;
+  settings.axes.y.range.max = 500;
+  settings.styles.curve.area.display = true;
+  averageSpark0 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Average 1.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = 0;
+  settings.axes.y.range.max = 500;
+  settings.styles.curve.area.display = true;
+  averageSpark1 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Difference.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = -100;
+  settings.axes.y.range.max = 100;
+  settings.styles.curve.area.display = true;
+  averageDeltaSpark = ofxSparkline(settings, 200);
 }
 
 //--------------------------------------------------------------
@@ -32,6 +59,9 @@ void testApp::update(){
 
   tickInterpreter.update();
   cout << tickInterpreter.getAverage(0) << "\t" << tickInterpreter.getAverage(1) << endl;
+  averageSpark0.push_back(tickInterpreter.getAverage(0));
+  averageSpark1.push_back(tickInterpreter.getAverage(1));
+  averageDeltaSpark.push_back(tickInterpreter.getAverage(1) - tickInterpreter.getAverage(0));
 }
 
 //--------------------------------------------------------------
@@ -39,6 +69,21 @@ void testApp::draw(){
   ofBackground(255, 128, 0);
   drawImage.setFromPixels(drawPixels, frameWidth, frameHeight, OF_IMAGE_COLOR_ALPHA);
   drawImage.draw(0, 0, ofGetWindowWidth(), ofGetWindowHeight());
+
+  int currY = 5;
+  ofPushMatrix();
+  ofScale(3, 3);
+
+  averageSpark0.draw(5, currY);
+  currY += averageSpark0.getHeight() + 10;
+
+  averageSpark1.draw(5, currY);
+  currY += averageSpark1.getHeight() + 10;
+
+  averageDeltaSpark.draw(5, currY);
+  currY += averageDeltaSpark.getHeight() + 10;
+
+  ofPopMatrix();
 }
 
 //--------------------------------------------------------------

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxSparkline.h"
 
 #include "RecordedTickReader.h"
 #include "SerialTickReader.h"
@@ -36,4 +37,8 @@ class testApp : public ofBaseApp{
   ofSerial serial;
   ITickReader* tickReader;
   TickInterpreter tickInterpreter;
+
+  ofxSparkline averageSpark0;
+  ofxSparkline averageSpark1;
+  ofxSparkline averageDeltaSpark;
 };

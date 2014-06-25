@@ -5,7 +5,7 @@
 #include "ofMain.h"
 #include "ITickReader.h"
 
-#define TICK_INTERPRETER_DELTAS_SIZE 500
+#define TICK_INTERPRETER_DELTAS_SIZE 50
 
 class TickInterpreter {
 

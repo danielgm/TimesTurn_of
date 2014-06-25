@@ -10,23 +10,31 @@
 	<string>TimesTurn_of</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>8A81BD54-CD9A-4B58-B4BF-00DA0C9FDBD2</key>
+		<string>https://github.com/Flightphase/ofxRange.git</string>
 		<key>C38ACFC3-DE30-4935-B2C2-3087935D5172</key>
 		<string>https://github.com/kylemcdonald/ofxCv.git</string>
 		<key>D62A4CA0-06E8-45EE-9661-CE6CF1E47810</key>
 		<string>https://github.com/danielgm/TimesTurn_of.git</string>
 		<key>EEACB52B-3236-4551-A4FE-8BB889FF6E54</key>
 		<string>https://github.com/paulobarcelos/ofxMacamPs3Eye.git</string>
+		<key>F24BD7E3-519D-4CC1-AE69-5E33FE8BAD3E</key>
+		<string>https://github.com/bakercp/ofxSparklines.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TimesTurn_of.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>8A81BD54-CD9A-4B58-B4BF-00DA0C9FDBD2</key>
+		<string>../../../../../addons/ofxRange</string>
 		<key>C38ACFC3-DE30-4935-B2C2-3087935D5172</key>
 		<string>../../../../../addons/ofxCv</string>
 		<key>D62A4CA0-06E8-45EE-9661-CE6CF1E47810</key>
 		<string>../..</string>
 		<key>EEACB52B-3236-4551-A4FE-8BB889FF6E54</key>
 		<string>../../../../../addons/ofxMacamPs3Eye</string>
+		<key>F24BD7E3-519D-4CC1-AE69-5E33FE8BAD3E</key>
+		<string>../../../../../addons/ofxSparklines</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/danielgm/TimesTurn_of.git</string>
@@ -51,6 +59,22 @@
 			<string>EEACB52B-3236-4551-A4FE-8BB889FF6E54</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxMacamPs3Eye</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8A81BD54-CD9A-4B58-B4BF-00DA0C9FDBD2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxRange</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F24BD7E3-519D-4CC1-AE69-5E33FE8BAD3E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxSparklines</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
