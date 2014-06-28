@@ -2,28 +2,29 @@
 
 void SerialTickReader::setup(ofSerial &s, int nChannels) {
   serial = &s;
-
-  numChannels = nChannels;
-  numTicks = new int[numChannels];
 }
 
 void SerialTickReader::update() {
-  for (int i = 0; i < numChannels; i++) {
-    numTicks[i] = 0;
-  }
-
-  char c;
-  while (serial->available()) {
-    c = serial->readByte();
-    numTicks[ofToInt(ofToString(c))]++;
-  }
 }
 
-int SerialTickReader::getNumChannels() {
-  return numChannels;
+bool SerialTickReader::hasNext() {
+  return serial->available();
 }
 
-int SerialTickReader::getNumTicks(int channel) {
-  return numTicks[channel];
+Tick SerialTickReader::next() {
+  Tick tick;
+
+  if (serial->available()) {
+    char c = serial->readByte();
+
+    tick.channel = ofToInt(ofToString(c));
+    tick.time = ofGetElapsedTimeMillis();
+  }
+  else {
+    tick.channel = -1;
+    tick.time = 0;
+  }
+
+  return tick;
 }
 

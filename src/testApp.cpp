@@ -6,12 +6,18 @@ void testApp::setup(){
 
   drawPixels = new unsigned char[frameWidth * frameHeight * 4];
 
-  //serial.listDevices();
-  //serial.setup(0, 9600);
-
+/*
   RecordedTickReader* recordedTickReader = new RecordedTickReader();
   recordedTickReader->setup("longsteady.csv", 2);
   tickReader = recordedTickReader;
+/*/
+  serial.listDevices();
+  serial.setup(0, 9600);
+
+  SerialTickReader* serialTickReader = new SerialTickReader();
+  serialTickReader->setup(serial, 2);
+  tickReader = serialTickReader;
+//*/
 
   tickInterpreter.setup(tickReader, 2);
 

@@ -10,11 +10,10 @@ class SerialTickReader
     void setup(ofSerial &serial, int nChannels);
     void update();
 
-    int getNumChannels();
-    int getNumTicks(int channel);
+    bool hasNext();
+    Tick next();
 
   private:
     ofSerial* serial;
     int numChannels;
-    int* numTicks;
 };
