@@ -17,6 +17,24 @@ void testApp::setup(){
 
   ofxSparkline::Settings settings;
   settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Raw 0.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = 0;
+  settings.axes.y.range.max = 500;
+  settings.styles.curve.area.display = true;
+  rawSpark0 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Raw 1.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = 0;
+  settings.axes.y.range.max = 500;
+  settings.styles.curve.area.display = true;
+  rawSpark1 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.annotations.label.display = true;
   settings.annotations.label.text = "{V} Average 0.";
   settings.annotations.label.precision = 2;
   settings.axes.y.range.min = 0;
@@ -35,12 +53,48 @@ void testApp::setup(){
 
   settings = ofxSparkline::Settings();
   settings.annotations.label.display = true;
-  settings.annotations.label.text = "{V} Difference.";
+  settings.annotations.label.text = "{V} Average difference.";
   settings.annotations.label.precision = 2;
   settings.axes.y.range.min = -100;
   settings.axes.y.range.max = 100;
   settings.styles.curve.area.display = true;
   averageDeltaSpark = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Raw velocity 0.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = -100;
+  settings.axes.y.range.max = 100;
+  settings.styles.curve.area.display = true;
+  rawVelocitySpark0 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Raw velocity 1.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = -100;
+  settings.axes.y.range.max = 100;
+  settings.styles.curve.area.display = true;
+  rawVelocitySpark1 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Average velocity 0.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = -100;
+  settings.axes.y.range.max = 100;
+  settings.styles.curve.area.display = true;
+  averageVelocitySpark0 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "{V} Average velocity 1.";
+  settings.annotations.label.precision = 2;
+  settings.axes.y.range.min = -100;
+  settings.axes.y.range.max = 100;
+  settings.styles.curve.area.display = true;
+  averageVelocitySpark1 = ofxSparkline(settings, 200);
 }
 
 //--------------------------------------------------------------
@@ -58,10 +112,15 @@ void testApp::update(){
   }
 
   tickInterpreter.update();
-  cout << tickInterpreter.getAverage(0) << "\t" << tickInterpreter.getAverage(1) << endl;
+  rawSpark0.push_back(tickInterpreter.getRaw(0));
+  rawSpark1.push_back(tickInterpreter.getRaw(1));
   averageSpark0.push_back(tickInterpreter.getAverage(0));
   averageSpark1.push_back(tickInterpreter.getAverage(1));
   averageDeltaSpark.push_back(tickInterpreter.getAverage(1) - tickInterpreter.getAverage(0));
+  rawVelocitySpark0.push_back(tickInterpreter.getRawVelocity(0));
+  rawVelocitySpark1.push_back(tickInterpreter.getRawVelocity(1));
+  averageVelocitySpark0.push_back(tickInterpreter.getAverageVelocity(0));
+  averageVelocitySpark1.push_back(tickInterpreter.getAverageVelocity(1));
 }
 
 //--------------------------------------------------------------
@@ -74,6 +133,12 @@ void testApp::draw(){
   ofPushMatrix();
   ofScale(3, 3);
 
+  rawSpark0.draw(5, currY);
+  currY += rawSpark0.getHeight() + 10;
+
+  rawSpark1.draw(5, currY);
+  currY += rawSpark1.getHeight() + 10;
+
   averageSpark0.draw(5, currY);
   currY += averageSpark0.getHeight() + 10;
 
@@ -82,6 +147,18 @@ void testApp::draw(){
 
   averageDeltaSpark.draw(5, currY);
   currY += averageDeltaSpark.getHeight() + 10;
+
+  rawVelocitySpark0.draw(5, currY);
+  currY += rawVelocitySpark0.getHeight() + 10;
+
+  rawVelocitySpark1.draw(5, currY);
+  currY += rawVelocitySpark1.getHeight() + 10;
+
+  averageVelocitySpark0.draw(5, currY);
+  currY += averageVelocitySpark0.getHeight() + 10;
+
+  averageVelocitySpark1.draw(5, currY);
+  currY += averageVelocitySpark1.getHeight() + 10;
 
   ofPopMatrix();
 }
