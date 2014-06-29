@@ -38,13 +38,5 @@ class testApp : public ofBaseApp{
   ITickReader* tickReader;
   TickInterpreter tickInterpreter;
 
-  ofxSparkline rawSpark0;
-  ofxSparkline rawSpark1;
-  ofxSparkline averageSpark0;
-  ofxSparkline averageSpark1;
-  ofxSparkline averageDeltaSpark;
-  ofxSparkline rawVelocitySpark0;
-  ofxSparkline rawVelocitySpark1;
-  ofxSparkline averageVelocitySpark0;
-  ofxSparkline averageVelocitySpark1;
+  ofxSparkline spark;
 };
