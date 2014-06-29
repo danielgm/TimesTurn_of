@@ -78,7 +78,7 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){
-
+  distortionist.setIntensity(ofClamp(ofMap(x, 0, ofGetWidth(), 0, 1), 0, 1));
 }
 
 //--------------------------------------------------------------

@@ -12,6 +12,8 @@ void Distortionist::setup(ofBaseVideoGrabber* grabber) {
 
   inputPixels = new unsigned char[maxFrameCount * frameWidth * frameHeight * 3];
   outputPixels = new unsigned char[frameWidth * frameHeight * 3];
+
+  intensity = 0;
 }
 
 void Distortionist::update() {
@@ -38,7 +40,8 @@ void Distortionist::update() {
     for (int x = 0; x < frameWidth; ++x) {
       for (int y = 0; y < frameHeight; ++y) {
         int i = (y * frameWidth + x);
-        int f = (frameIndex + (int)ofMap(x, 0, frameWidth, 0, frameCount)) % frameCount;
+        // That '+ frameCount' keeps the modulus result positive.
+        int f = (frameIndex - (int)ofMap(x * intensity, 0, frameWidth, 0, frameCount) + frameCount) % frameCount;
         for (int c = 0; c < 3; ++c) {
           outputPixels[i * 3 + c] = inputPixels[f * frameWidth * frameHeight * 3 + i * 3 + c];
         }
@@ -53,4 +56,8 @@ bool Distortionist::isFrameNew() {
 
 unsigned char* Distortionist::getPixels() {
   return outputPixels;
+}
+
+void Distortionist::setIntensity(float i) {
+  intensity = i;
 }

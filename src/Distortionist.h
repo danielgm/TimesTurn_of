@@ -10,6 +10,9 @@ class Distortionist {
     bool isFrameNew();
     unsigned char* getPixels();
 
+    /** Intensity of the distortion on a scale of 0 to 1. */
+    void setIntensity(float intensity);
+
   private:
     ofBaseVideoGrabber* videoGrabber;
 
@@ -27,4 +30,6 @@ class Distortionist {
 
     unsigned char* inputPixels;
     unsigned char* outputPixels;
+
+    float intensity;
 };
