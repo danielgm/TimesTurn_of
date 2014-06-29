@@ -3,6 +3,7 @@
 #include "ofMain.h"
 #include "ofxSparkline.h"
 
+#include "Distortionist.h"
 #include "RecordedTickReader.h"
 #include "SerialTickReader.h"
 #include "TickInterpreter.h"
@@ -24,14 +25,11 @@ class testApp : public ofBaseApp{
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-  void loadFrames(string folder);
-
-  int frameCount;
   int frameWidth;
   int frameHeight;
 
-  unsigned char* inputPixels;
-  unsigned char* drawPixels;
+  ofxMacamPs3Eye* ps3eye;
+  Distortionist distortionist;
   ofImage drawImage;
 
   ofSerial serial;

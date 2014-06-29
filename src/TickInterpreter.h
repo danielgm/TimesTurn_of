@@ -3,6 +3,7 @@
 #include <list>
 
 #include "ofMain.h"
+#include "ofxMacamPs3Eye.h"
 #include "ITickReader.h"
 
 #define TICK_INTERPRETER_DURATION 2000

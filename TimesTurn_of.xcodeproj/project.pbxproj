@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		031A611C1955E0E800376B85 /* SerialTickReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031A61191955E0E800376B85 /* SerialTickReader.cpp */; };
 		031A611F19573E6500376B85 /* RecordedTickReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 031A611D19573E6500376B85 /* RecordedTickReader.cpp */; };
+		03814CA01960232E006A9E06 /* Distortionist.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03814C9E1960232E006A9E06 /* Distortionist.cpp */; };
 		039ED7CD1959411E0095CA9F /* TickInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 039ED7CB1959411E0095CA9F /* TickInterpreter.cpp */; };
 		03D5D8F5195A9974004C6AC8 /* ofxSparkline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03D5D8F0195A9974004C6AC8 /* ofxSparkline.cpp */; };
 		10B69DE456AED1288FC9316B /* Tracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A810DF70319A10353588F5DB /* Tracker.cpp */; };
@@ -113,6 +114,8 @@
 		031A611A1955E0E800376B85 /* SerialTickReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialTickReader.h; sourceTree = "<group>"; };
 		031A611D19573E6500376B85 /* RecordedTickReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RecordedTickReader.cpp; sourceTree = "<group>"; };
 		031A611E19573E6500376B85 /* RecordedTickReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordedTickReader.h; sourceTree = "<group>"; };
+		03814C9E1960232E006A9E06 /* Distortionist.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Distortionist.cpp; sourceTree = "<group>"; };
+		03814C9F1960232E006A9E06 /* Distortionist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Distortionist.h; sourceTree = "<group>"; };
 		039ED7CB1959411E0095CA9F /* TickInterpreter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TickInterpreter.cpp; sourceTree = "<group>"; };
 		039ED7CC1959411E0095CA9F /* TickInterpreter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickInterpreter.h; sourceTree = "<group>"; };
 		03A75A648BC4CF1D9DEDD0CE /* Flow.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Flow.cpp; path = ../../../addons/ofxCv/libs/ofxCv/src/Flow.cpp; sourceTree = SOURCE_ROOT; };
@@ -864,6 +867,8 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				03814C9E1960232E006A9E06 /* Distortionist.cpp */,
+				03814C9F1960232E006A9E06 /* Distortionist.h */,
 				031A61181955E0E800376B85 /* ITickReader.h */,
 				031A611D19573E6500376B85 /* RecordedTickReader.cpp */,
 				031A611E19573E6500376B85 /* RecordedTickReader.h */,
@@ -1064,6 +1069,7 @@
 				54246E0E70670038E43D95BC /* Histogram.m in Sources */,
 				7420F743C006B26B95FF9051 /* LookUpTable.m in Sources */,
 				ADF8B0EA6A6B24734C9AA58C /* MiniGraphicsTools.cpp in Sources */,
+				03814CA01960232E006A9E06 /* Distortionist.cpp in Sources */,
 				031A611F19573E6500376B85 /* RecordedTickReader.cpp in Sources */,
 				B9DA57768B33F7C78565D998 /* MiscTools.cpp in Sources */,
 				F3E713688B294518F741B7E9 /* MyCameraCentral.m in Sources */,
