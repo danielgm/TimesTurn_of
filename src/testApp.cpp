@@ -21,6 +21,8 @@ void testApp::setup(){
 
   tickInterpreter.setup(tickReader, 2);
 
+  isSparkPlaying = true;
+
   ofxSparkline::Settings settings;
   settings.width = 200;
   settings.annotations.label.display = true;
@@ -111,16 +113,19 @@ void testApp::setup(){
 //--------------------------------------------------------------
 void testApp::update(){
   tickInterpreter.update();
-  rawSpark0.push_back(serialTickReader->getReading(0));
-  rawSpark1.push_back(serialTickReader->getReading(1));
-  thresholdSpark0.push_back((serialTickReader->getReading(0) > serialTickReader->getUpperThreshold(0))
-        ? 1 : (serialTickReader->getReading(0) < serialTickReader->getLowerThreshold(0)) ? -1 : 0);
-  thresholdSpark1.push_back((serialTickReader->getReading(1) > serialTickReader->getUpperThreshold(1))
-        ? 1 : (serialTickReader->getReading(1) < serialTickReader->getLowerThreshold(1)) ? -1 : 0);
-  thresholdRangeSpark0.push_back(serialTickReader->getReading(0));
-  thresholdRangeSpark1.push_back(serialTickReader->getReading(1));
-  velocitySpark0.push_back(tickInterpreter.getVelocity(0));
-  velocitySpark1.push_back(tickInterpreter.getVelocity(1));
+
+  if (isSparkPlaying) {
+    rawSpark0.push_back(serialTickReader->getReading(0));
+    rawSpark1.push_back(serialTickReader->getReading(1));
+    thresholdSpark0.push_back((serialTickReader->getReading(0) > serialTickReader->getUpperThreshold(0))
+          ? 1 : (serialTickReader->getReading(0) < serialTickReader->getLowerThreshold(0)) ? -1 : 0);
+    thresholdSpark1.push_back((serialTickReader->getReading(1) > serialTickReader->getUpperThreshold(1))
+          ? 1 : (serialTickReader->getReading(1) < serialTickReader->getLowerThreshold(1)) ? -1 : 0);
+    thresholdRangeSpark0.push_back(serialTickReader->getReading(0));
+    thresholdRangeSpark1.push_back(serialTickReader->getReading(1));
+    velocitySpark0.push_back(tickInterpreter.getVelocity(0));
+    velocitySpark1.push_back(tickInterpreter.getVelocity(1));
+  }
 
   distortionist.update();
   if (distortionist.isFrameNew()) {
@@ -173,7 +178,11 @@ void testApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+  switch (key) {
+    case ' ':
+      isSparkPlaying = !isSparkPlaying;
+      break;
+  }
 }
 
 //--------------------------------------------------------------

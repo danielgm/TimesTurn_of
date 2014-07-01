@@ -37,6 +37,7 @@ class testApp : public ofBaseApp{
   ITickReader* tickReader;
   TickInterpreter tickInterpreter;
 
+  bool isSparkPlaying;
   ofxSparkline rawSpark0;
   ofxSparkline rawSpark1;
   ofxSparkline thresholdSpark0;
