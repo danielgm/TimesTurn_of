@@ -103,6 +103,16 @@ void testApp::setup(){
   settings.styles.curve.area.display = true;
   velocitySpark1 = ofxSparkline(settings, 200);
 
+  settings = ofxSparkline::Settings();
+  settings.width = 200;
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "Difference\n{V}";
+  settings.annotations.label.precision = 4;
+  settings.axes.y.range.min = -0.0075;
+  settings.axes.y.range.max = 0.0075;
+  settings.styles.curve.area.display = true;
+  differenceSpark = ofxSparkline(settings, 200);
+
   ps3eye = new ofxMacamPs3Eye();
   ps3eye->initGrabber(320, 240, false);
 
@@ -125,7 +135,10 @@ void testApp::update(){
     thresholdRangeSpark1.push_back(serialTickReader->getReading(1));
     velocitySpark0.push_back(tickInterpreter.getVelocity(0));
     velocitySpark1.push_back(tickInterpreter.getVelocity(1));
+    differenceSpark.push_back(tickInterpreter.getVelocity(0) - tickInterpreter.getVelocity(1));
   }
+
+  distortionist.setIntensity(ofClamp(ofMap(abs(tickInterpreter.getVelocity(0) - tickInterpreter.getVelocity(1)), 0, 0.0075, 0, 1), 0, 1));
 
   distortionist.update();
   if (distortionist.isFrameNew()) {
@@ -168,6 +181,9 @@ void testApp::draw(){
   velocitySpark1.draw(5, currY);
   currY += velocitySpark1.getHeight() + 10;
 
+  differenceSpark.draw(5, currY);
+  currY += differenceSpark.getHeight() + 10;
+
   ofPopMatrix();
 }
 
@@ -187,7 +203,7 @@ void testApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){
-  distortionist.setIntensity(ofClamp(ofMap(x, 0, ofGetWidth(), 0, 1), 0, 1));
+
 }
 
 //--------------------------------------------------------------
