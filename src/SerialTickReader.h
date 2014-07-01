@@ -5,9 +5,6 @@
 #include "ofMain.h"
 #include "ITickReader.h"
 
-#define SERIAL_TICK_READER_LOWER_THRESHOLD 600
-#define SERIAL_TICK_READER_UPPER_THRESHOLD 700
-
 class SerialTickReader
 : public ITickReader {
 
@@ -18,6 +15,8 @@ class SerialTickReader
     bool hasNext();
     Tick next();
     int getReading(int channel);
+    int getLowerThreshold(int channel);
+    int getUpperThreshold(int channel);
 
   private:
     void processLine(string line);
@@ -28,4 +27,6 @@ class SerialTickReader
     int* direction;
     int numChannels;
     int* readings;
+    int* lowerThresholds;
+    int* upperThresholds;
 };

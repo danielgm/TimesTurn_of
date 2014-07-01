@@ -44,6 +44,26 @@ void testApp::setup(){
   settings = ofxSparkline::Settings();
   settings.width = 200;
   settings.annotations.label.display = true;
+  settings.annotations.label.text = "Threshold 0\n{V}";
+  settings.annotations.label.precision = 4;
+  settings.axes.y.range.min = -1;
+  settings.axes.y.range.max = 1;
+  settings.styles.curve.area.display = true;
+  thresholdSpark0 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.width = 200;
+  settings.annotations.label.display = true;
+  settings.annotations.label.text = "Threshold 1\n{V}";
+  settings.annotations.label.precision = 4;
+  settings.axes.y.range.min = -1;
+  settings.axes.y.range.max = 1;
+  settings.styles.curve.area.display = true;
+  thresholdSpark1 = ofxSparkline(settings, 200);
+
+  settings = ofxSparkline::Settings();
+  settings.width = 200;
+  settings.annotations.label.display = true;
   settings.annotations.label.text = "Velocity 0\n{V}";
   settings.annotations.label.precision = 4;
   settings.axes.y.range.min = 0;
@@ -73,6 +93,10 @@ void testApp::update(){
   tickInterpreter.update();
   rawSpark0.push_back(serialTickReader->getReading(0));
   rawSpark1.push_back(serialTickReader->getReading(1));
+  thresholdSpark0.push_back((serialTickReader->getReading(0) > serialTickReader->getUpperThreshold(0))
+        ? 1 : (serialTickReader->getReading(0) < serialTickReader->getLowerThreshold(0)) ? -1 : 0);
+  thresholdSpark1.push_back((serialTickReader->getReading(1) > serialTickReader->getUpperThreshold(1))
+        ? 1 : (serialTickReader->getReading(1) < serialTickReader->getLowerThreshold(1)) ? -1 : 0);
   velocitySpark0.push_back(tickInterpreter.getVelocity(0));
   velocitySpark1.push_back(tickInterpreter.getVelocity(1));
 
@@ -89,15 +113,21 @@ void testApp::draw(){
   ps3eye->draw(5, 5, 320, 240);
   drawImage.draw(330, 5, 320, 240);
 
-  int currY = 250 / 3;
+  int currY = 250 / 2;
   ofPushMatrix();
-  ofScale(3, 3);
+  ofScale(2, 2);
 
   rawSpark0.draw(5, currY);
   currY += rawSpark0.getHeight() + 10;
 
   rawSpark1.draw(5, currY);
   currY += rawSpark1.getHeight() + 10;
+
+  thresholdSpark0.draw(5, currY);
+  currY += thresholdSpark0.getHeight() + 10;
+
+  thresholdSpark1.draw(5, currY);
+  currY += thresholdSpark1.getHeight() + 10;
 
   velocitySpark0.draw(5, currY);
   currY += velocitySpark0.getHeight() + 10;
