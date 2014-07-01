@@ -17,6 +17,7 @@ class SerialTickReader
 
     bool hasNext();
     Tick next();
+    int getReading(int channel);
 
   private:
     void processLine(string line);
@@ -26,4 +27,5 @@ class SerialTickReader
     std::queue<Tick> queue;
     int* direction;
     int numChannels;
+    int* readings;
 };

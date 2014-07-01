@@ -4,6 +4,11 @@ void SerialTickReader::setup(ofSerial &s, int nChannels) {
   serial = &s;
 
   direction = new int[numChannels];
+  readings = new int[numChannels];
+  for (int i = 0; i < numChannels; ++i) {
+    direction[i] = 1;
+    readings[i] = 0;
+  }
 }
 
 void SerialTickReader::update() {
@@ -29,11 +34,15 @@ Tick SerialTickReader::next() {
   return tick;
 }
 
+int SerialTickReader::getReading(int channel) {
+  return readings[channel];
+}
+
 void SerialTickReader::processLine(string line) {
   std::vector<string> tokens = ofSplitString(line, "\t");
   for (int c = 0; c < tokens.size(); ++c) {
-    int v = ofToInt(tokens[c]);
-    if (v > SERIAL_TICK_READER_UPPER_THRESHOLD && direction[c] > 0) {
+    readings[c] = ofToInt(tokens[c]);
+    if (readings[c] > SERIAL_TICK_READER_UPPER_THRESHOLD && direction[c] > 0) {
       Tick tick;
       tick.channel = c;
       tick.time = ofGetElapsedTimeMillis();
@@ -41,7 +50,7 @@ void SerialTickReader::processLine(string line) {
 
       direction[c] = -1;
     }
-    else if (v < SERIAL_TICK_READER_LOWER_THRESHOLD && direction[c] < 0) {
+    else if (readings[c] < SERIAL_TICK_READER_LOWER_THRESHOLD && direction[c] < 0) {
       direction[c] = 1;
     }
   }

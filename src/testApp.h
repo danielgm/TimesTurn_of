@@ -33,8 +33,12 @@ class testApp : public ofBaseApp{
   ofImage drawImage;
 
   ofSerial serial;
+  SerialTickReader* serialTickReader;
   ITickReader* tickReader;
   TickInterpreter tickInterpreter;
 
-  ofxSparkline spark;
+  ofxSparkline rawSpark0;
+  ofxSparkline rawSpark1;
+  ofxSparkline velocitySpark0;
+  ofxSparkline velocitySpark1;
 };
