@@ -41,6 +41,8 @@ class testApp : public ofBaseApp{
   ofxSparkline rawSpark1;
   ofxSparkline thresholdSpark0;
   ofxSparkline thresholdSpark1;
+  ofxSparkline thresholdRangeSpark0;
+  ofxSparkline thresholdRangeSpark1;
   ofxSparkline velocitySpark0;
   ofxSparkline velocitySpark1;
 };

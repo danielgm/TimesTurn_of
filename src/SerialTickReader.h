@@ -16,7 +16,9 @@ class SerialTickReader
     Tick next();
     int getReading(int channel);
     int getLowerThreshold(int channel);
+    void setLowerThreshold(int channel, int threshold);
     int getUpperThreshold(int channel);
+    void setUpperThreshold(int channel, int threshold);
 
   private:
     void processLine(string line);

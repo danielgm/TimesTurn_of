@@ -13,8 +13,8 @@ void SerialTickReader::setup(ofSerial &s, int nChannels) {
     direction[i] = 1;
     readings[i] = 0;
 
-    lowerThresholds[i] = 600;
-    upperThresholds[i] = 700;
+    lowerThresholds[i] = 515;
+    upperThresholds[i] = 530;
   }
 }
 
@@ -49,8 +49,16 @@ int SerialTickReader::getLowerThreshold(int channel) {
   return lowerThresholds[channel];
 }
 
+void SerialTickReader::setLowerThreshold(int channel, int threshold) {
+  lowerThresholds[channel] = threshold;
+}
+
 int SerialTickReader::getUpperThreshold(int channel) {
   return upperThresholds[channel];
+}
+
+void SerialTickReader::setUpperThreshold(int channel, int threshold) {
+  upperThresholds[channel] = threshold;
 }
 
 void SerialTickReader::processLine(string line) {
